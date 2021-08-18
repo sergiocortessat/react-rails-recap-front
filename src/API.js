@@ -15,26 +15,36 @@ export const postUser = async (data, accessToken) => {
 };
 
 export const getPosts = async () => {
-    const response = await fetch(postsEndpoint);
-    const post = await response.json();
-    return post;
-  };
+  const response = await fetch(postsEndpoint);
+  const post = await response.json();
+  return post;
+};
 
-  export const postPost = async (data, accessToken) => {
-    const response = await fetch(postsEndpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${accessToken}`,
-      },
-      body: JSON.stringify(data),
-    });
-    const post = await response.json();
-    return post;
-  };
+export const postPost = async (data, accessToken) => {
+  const response = await fetch(postsEndpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(data),
+  });
+  const post = await response.json();
+  return post;
+};
 
-  export const getPost = async (id) => {
-    const response = await fetch(`${postsEndpoint}/${id}`);
-    const review = await response.json();
-    return review;
-  }
+export const getPost = async (id) => {
+  const response = await fetch(`${postsEndpoint}/${id}`);
+  const review = await response.json();
+  return review;
+};
+
+export const deletePost = async (id, accessToken) => {
+  await fetch(`${postsEndpoint}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${accessToken}`,
+    },
+  });
+};

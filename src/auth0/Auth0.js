@@ -13,7 +13,7 @@ const AuthenticationButton = () => {
       name: user.name,
       given_name: user.given_name,
       family_name: user.family_name,
-      picture: user.picture
+      picture: user.picture,
     };
 
     getAccessTokenSilently()
