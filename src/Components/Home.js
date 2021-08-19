@@ -74,7 +74,9 @@ const Home = () => {
             </div>
             {/* delete button */}
           </Link>
+          {isAuthenticated && (post.sub === user.sub) && (
           <button type="button" onClick={() => handleDelete(post)}>Delete</button>
+          )}
         </div>
       ))}
     </div>

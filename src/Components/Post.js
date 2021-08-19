@@ -10,16 +10,11 @@ const Post = () => {
   const [post, setPost] = useState(null);
   const { id } = useParams();
   const history = useHistory();
-  const location = useLocation();
-  const { render } = location.state;
-  console.log(render);
 
   const handleDelete = async () => {
     const token = await getAccessTokenSilently();
     await deletePost(id, token);
     history.go(-1);
-    // window.history.go(0);
-    // window.location.reload();
   };
 
   useEffect(() => {
@@ -37,7 +32,9 @@ const Post = () => {
       <p>{post.user.name}</p>
       <p>{post.id}</p>
       <img src={post.user.picture} alt="ha" />
+      {isAuthenticated && (user.sub === post.sub) && (
       <button type="button" onClick={() => handleDelete()}>Delete</button>
+      )}
     </div>
     )
   );
